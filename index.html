@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUT計算器</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <h1>AUT計算器</h1>
+
+  <label for = "cernium">賽爾尼溫</label>
+  <label for = "cernium before">初始等級</label>
+  <input type = "number" id = "cernium before" min = "1" max = "11" required>
+  <label for = "cernium after">目標等級</label>
+  <input type = "number" id = "cernium after" min = "1" max = "11" required>
+  <div id = 'cernium result'></div>
+  <br>
+
+  <label for = "arcus">阿爾克斯</label>
+  <label for = "arcus before">初始等級</label>
+  <input type = "number" id = "arcus before" min = "1" max = "11" required>
+  <label for = "arcus after">目標等級</label>
+  <input type = "number" id = "arcus after" min = "1" max = "11" required>
+  <div id = 'arcus result'></div>
+  <br>
+
+  <label for = "odium">奧迪溫</label>
+  <label for = "odium before">初始等級</label>
+  <input type = "number" id = "odium before" min = "1" max = "11" required>
+  <label for = "odium after">目標等級</label>
+  <input type = "number" id = "odium after" min = "1" max = "11" required>
+  <div id = 'odium result'></div>
+  <br>
+  
+  <button id="calculateBtn">計算</button>
+  <div id = 'total result'></div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

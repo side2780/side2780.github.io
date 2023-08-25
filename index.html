@@ -9,41 +9,40 @@
 <body>
 <div class="container">
   <h1>AUT計算器</h1>
-  <table cellpadding = '10' border = '1'>
+  <table>
     <tr>
-      <td>地區</td>
-      <td>初始等級</td>
-      <td>目標等級</td>
-      <td>所需楓幣</td>
+      <td><center>地區</center></td>
+      <td><center>初始等級</center></td>
+      <td><center>目標等級</center></td>
+      <td><center>所需楓幣</center></td>
     </tr>
     <tr>
-      <td><label for = "cernium">賽爾尼溫</label></td>
+      <td><label for = "cernium" class = 'area'>賽爾尼溫</label></td>
       <td><input type = "number" id = "cernium before" min = "1" max = "11" required></td>
       <td><input type = "number" id = "cernium after" min = "1" max = "11" required></td>
-      <td><div id = 'cernium result'>0楓幣</div></td>
+      <td><div id = 'cernium result'>0</div></td>
     </tr>
     <tr>
-      <td><label for = "arcus">阿爾克斯</label></td>
+      <td><label for = "arcus" class = 'area'>阿爾克斯</label></td>
       <td><input type = "number" id = "arcus before" min = "1" max = "11" required></td>
       <td><input type = "number" id = "arcus after" min = "1" max = "11" required></td>
-      <td><div id = 'arcus result'>0楓幣</div></td>
+      <td><div id = 'arcus result'>0</div></td>
     </tr>
     <tr>
-      <td><label for = "odium">奧迪溫</label></td>
+      <td><label for = "odium" class = 'area'>奧迪溫</label></td>
       <td><input type = "number" id = "odium before" min = "1" max = "11" required></td>
       <td><input type = "number" id = "odium after" min = "1" max = "11" required></td>
-      <td><div id = 'odium result'>0楓幣</div></td>
+      <td><div id = 'odium result'>0</div></td>
     </tr>
     <tr>
       <td>合計</td>
       <td></td>
       <td></td>
-      <td><div id = 'total result'></div></td>
+      <td><div id = 'total result'>0</div></td>
     </tr>
   </table>
   <br>
   <button id="calculateBtn">計算</button>
-  
 
 </div>
 <script src="script.js"></script>

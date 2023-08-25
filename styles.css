@@ -43,8 +43,13 @@ button:hover {
   background-color: #0056b3;
 }
 
-#result {
-  margin-top: 10px;
+table {
+  width: 100%;
+  border: 3px solid;
+}
+
+tr td {
+  padding: 10px;
+  border: 1px solid;
   text-align: center;
-  font-weight: bold;
 }

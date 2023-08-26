@@ -6,11 +6,17 @@ body {
 }
 
 .container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px 50px 20px 50px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
 }
 
 h1 {
@@ -22,21 +28,32 @@ label {
   margin-bottom: 5px;
 }
 
-input {
-  width: 80%;
+.aut-level {
+  width: 70%;
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
 }
 
+.daily-level {
+  width: 15%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
 button {
   display: block;
-  width: 100%;
+  width: 80%;
   padding: 10px;
   background-color: #007bff;
   color: #fff;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
+  position: relative;
+  left: 10%
 }
 
 button:hover {
@@ -52,4 +69,29 @@ tr td {
   padding: 10px;
   border: 1px solid;
   text-align: center;
+}
+
+.top-row{
+  display:flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 2px 50px 2px 50px;
+  background-color: white;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.top-row-item{
+  border-radius: 5px;
+  background-color: #007bff;
+  margin: 2px;
+  padding: 6px;
+}
+
+.top-row-item:hover{
+  background-color: #0056b3;
+}
+
+.top-row-item a {
+  color: white;
 }

@@ -17,17 +17,24 @@
         <table>
             <tr>
                 <td>地區</td>
-                <td>場數</td>
+                <td>完成</td>
                 <td>經驗值</td>
                 <td>%數</td>
             </tr>
             <tr>
                 <td>消逝的旅途</td>
-                <td><input type="checkbox"></td>
-                <td>0</td>
-                <td>0</td>
+                <td><input id="daily-vanishing-check" type="checkbox" disabled="true" ></td>
+                <td><div id="daily-vanishing-exp">0</div></td>
+                <td><div id="daily-vanishing-percent">0%</div></td>
+            </tr>
+            <tr>
+                <td>啾啾艾爾蘭</td>
+                <td><input id="daily-chuchu-check" type="checkbox" disabled="true" ></td>
+                <td><div id="daily-chuchu-exp">0</div></td>
+                <td><div id="daily-chuchu-percent">0%</div></td>
             </tr>
         </table>
     </div>
+    <script src="scriptdaily.js"></script>
 </body>
 </html>

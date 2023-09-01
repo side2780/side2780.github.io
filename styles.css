@@ -16,6 +16,10 @@ body {
   border-radius: 10px;
 }
 
+.container:hover{
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
 a {
   text-decoration: none;
   color: blue;
@@ -65,11 +69,12 @@ button:hover {
 table {
   width: 100%;
   border: 3px solid;
+  /* border-radius: 8px; */
 }
 
 tr td {
   padding: 10px;
-  border: 1px solid;
+  border: 2px ridge;
   text-align: center;
 }
 
@@ -81,6 +86,10 @@ tr td {
   background-color: white;
   max-width: 600px;
   border-radius: 8px;
+}
+
+.top-row:hover{
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
 .top-row-item{

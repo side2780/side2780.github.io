@@ -16,7 +16,7 @@ body {
   border-radius: 10px;
 }
 
-.container:hover{
+.container:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -81,8 +81,8 @@ tr td {
   text-align: center;
 }
 
-.top-row{
-  display:flex;
+.top-row {
+  display: flex;
   justify-content: center;
   margin-top: 20px;
   padding: 2px 50px 2px 50px;
@@ -91,21 +91,36 @@ tr td {
   border-radius: 8px;
 }
 
-.top-row:hover{
+.top-row:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
-.top-row-item{
+.top-row-item {
   border-radius: 5px;
   background-color: #007bff;
   margin: 2px;
   padding: 6px;
 }
 
-.top-row-item:hover{
+.top-row-item:hover {
   background-color: #0056b3;
 }
 
 .top-row-item a {
   color: white;
+}
+
+.daily-summary-box {
+  width: 270px;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 6px 3px 6px 3px;
+  border: 2px solid rgba(255, 192, 3, 0.858);
+  background-color: rgb(255, 252, 67);
+  color: rgb(0, 0, 0);
+}
+
+.daily-summary-box:hover {
+  box-shadow: 0 0 5px rgba(255, 192, 3, 0.858);
+  background-color: rgb(255, 236, 67);
 }

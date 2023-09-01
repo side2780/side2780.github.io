@@ -1,56 +1,77 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AUT計算器</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUT計算器</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <center><div class="top-row">
-    <div class="top-row-item"><a href="index.html">AUT計算器</a></div>
-    <div class="top-row-item"><a href="dailyexp.html">每日任務經驗值計算器</a></div>
-  </div></center>
+  <center>
+    <div class="top-row">
+      <div class="top-row-item"><a href="index.html">AUT計算器</a></div>
+      <div class="top-row-item"><a href="dailyexp.html">每日任務經驗值計算器</a></div>
+    </div>
+  </center>
   <div class="container">
     <h1>AUT計算器</h1>
     <table>
       <tr>
-        <td><center>地區</center></td>
-        <td><center>初始等級</center></td>
-        <td><center>目標等級</center></td>
-        <td><center>所需楓幣</center></td>
+        <td>
+          <center>地區</center>
+        </td>
+        <td>
+          <center>初始等級</center>
+        </td>
+        <td>
+          <center>目標等級</center>
+        </td>
+        <td>
+          <center>所需楓幣</center>
+        </td>
       </tr>
       <tr>
-        <td><label for = "cernium" class = 'area'>賽爾尼溫</label></td>
-        <td><input type = "number" class = 'aut-level' id = "cernium before" min = "1" max = "11" required></td>
-        <td><input type = "number" class = 'aut-level' id = "cernium after" min = "1" max = "11" required></td>
-        <td><div id = 'cernium result'>0</div></td>
+        <td><label for="cernium" class='area'>賽爾尼溫</label></td>
+        <td><input type="number" class='aut-level' id="cernium before" min="1" max="11" required></td>
+        <td><input type="number" class='aut-level' id="cernium after" min="1" max="11" required></td>
+        <td>
+          <div id='cernium result'>0</div>
+        </td>
       </tr>
       <tr>
-        <td><label for = "arcus" class = 'area'>阿爾克斯</label></td>
-        <td><input type = "number" class = 'aut-level' id = "arcus before" min = "1" max = "11" required></td>
-        <td><input type = "number" class = 'aut-level' id = "arcus after" min = "1" max = "11" required></td>
-        <td><div id = 'arcus result'>0</div></td>
+        <td><label for="arcus" class='area'>阿爾克斯</label></td>
+        <td><input type="number" class='aut-level' id="arcus before" min="1" max="11" required></td>
+        <td><input type="number" class='aut-level' id="arcus after" min="1" max="11" required></td>
+        <td>
+          <div id='arcus result'>0</div>
+        </td>
       </tr>
       <tr>
-        <td><label for = "odium" class = 'area'>奧迪溫</label></td>
-        <td><input type = "number" class = 'aut-level' id = "odium before" min = "1" max = "11" required></td>
-        <td><input type = "number" class = 'aut-level' id = "odium after" min = "1" max = "11" required></td>
-        <td><div id = 'odium result'>0</div></td>
+        <td><label for="odium" class='area'>奧迪溫</label></td>
+        <td><input type="number" class='aut-level' id="odium before" min="1" max="11" required></td>
+        <td><input type="number" class='aut-level' id="odium after" min="1" max="11" required></td>
+        <td>
+          <div id='odium result'>0</div>
+        </td>
       </tr>
       <tr>
         <td>合計</td>
         <td></td>
         <td></td>
-        <td><div id = 'total result'>0</div></td>
+        <td>
+          <div id='total result'>0</div>
+        </td>
       </tr>
     </table>
     <br>
     <button id="calculateBtn">計算</button>
-    <br/>
+    <br />
     <!-- <center>其他功能：<a href = 'dailyexp.html'>每日任務經驗值計算器</a></center> -->
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>

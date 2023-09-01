@@ -2,7 +2,7 @@ document.getElementById('calculateBtn').addEventListener('click', function () {
   const cerniumBefore = parseFloat(document.getElementById('cernium before').value);
   const cerniumAfter = parseFloat(document.getElementById('cernium after').value);
   const arcusBefore = parseFloat(document.getElementById('arcus before').value);
-  
+
   const arcusAfter = parseFloat(document.getElementById('arcus after').value);
   const odiumBefore = parseFloat(document.getElementById('odium before').value);
   const odiumAfter = parseFloat(document.getElementById('odium after').value);
@@ -20,7 +20,7 @@ document.getElementById('calculateBtn').addEventListener('click', function () {
 
 function cerniumCost(before, after) {
   var cost = 0;
-  if (before < 1 || after > 11) {return 0;}
+  if (before < 1 || after > 11) { return 0; }
   for (var i = before; i < after; i++) {
     cost += (96900000 + 88500000 * i);
   }
@@ -29,7 +29,7 @@ function cerniumCost(before, after) {
 
 function arcusCost(before, after) {
   var cost = 0;
-  if (before < 1 || after > 11) {return 0;}
+  if (before < 1 || after > 11) { return 0; }
   for (var i = before; i < after; i++) {
     cost += (106600000 + 97300000 * i);
   }
@@ -38,7 +38,7 @@ function arcusCost(before, after) {
 
 function odiumCost(before, after) {
   var cost = 0;
-  if (before < 1 || after > 11) {return 0;}
+  if (before < 1 || after > 11) { return 0; }
   for (var i = before; i < after; i++) {
     cost += (117400000 + 107100000 * i);
   }

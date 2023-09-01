@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  /* background-color: rgb(109, 109, 109); */
   /* background-image: url('background.png'); */
   background-size: cover;
 }
@@ -100,6 +101,7 @@ tr td {
   background-color: #007bff;
   margin: 2px;
   padding: 6px;
+  color: white;
 }
 
 .top-row-item:hover {
@@ -111,13 +113,14 @@ tr td {
 }
 
 .daily-summary-box {
-  width: 270px;
+  width: 300px auto;
+  min-width: 200px;
   border-radius: 8px;
   padding: 10px;
   margin: 6px 3px 6px 3px;
   border: 2px solid rgba(255, 192, 3, 0.858);
   background-color: rgb(255, 252, 67);
-  color: rgb(0, 0, 0);
+  font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
 }
 
 .daily-summary-box:hover {

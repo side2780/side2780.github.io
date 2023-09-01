@@ -11,11 +11,11 @@
 <body>
     <center>
         <div class="top-row">
-            <div class="top-row-item"><a href="index.html">AUT計算器</a></div>
-            <div class="top-row-item"><a href="dailyexp.html">每日任務經驗值計算器</a></div>
+            <div class="top-row-item" onclick="javascript:location.href=`index.html`">AUT計算器</a></div>
+            <div class="top-row-item" onclick="javascript:location.href=`dailyexp.html`">每日任務經驗值計算器</a></div>
         </div>
     </center>
-    <div id='daily-summary' class='container' style="float: left; position: fixed; right: 20px; padding: 10px;">
+    <div id='daily-summary' class='container' style="float: left; position: fixed; right: 20px; padding: 10px; z-index: 1;">
         <div id='daily-summary-quest' class='daily-summary-box'
             onclick="document.getElementById(`daily-quest-block`).scrollIntoView()">每日任務: 0 (0%)</div>
         <div id='daily-summary-park' class='daily-summary-box'
@@ -25,11 +25,11 @@
     </div>
     <div id='daily-quest-block' class='container'>
         <h1>每日任務經驗值計算器</h1>
-        <div>
-            <span style="position: relative; top: 9px; left: 3px">角色等級</span>
+        <div style="display: flex;">
+            <span style="position: relative; top: 12px; left: 3px">角色等級</span>
             <input class='daily-level' id='level-input' type='number' min="1" max="300"
-                style="position: relative; top: 8px; left:3px; border-radius: 6px; padding: 8px;" />
-            <div style="float:right; display: flex;">
+                style="position: relative; top: 8px; left:10px; border-radius: 6px; padding: 8px;" />
+            <div style="display: flex; position: relative; left: 270px;">
                 <button id="all-complete-button" onclick="all_selected()"
                     style="position: relative; margin: 3px;">全部勾選</button>
                 <button id="all-incomplete-button" onclick="all_canceled()"

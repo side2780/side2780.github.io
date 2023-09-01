@@ -13,7 +13,14 @@
     </div></center>
     <div class = 'container'>
     <h1>每日任務經驗值計算器</h1>
-        <span>角色等級</span> <input class = 'daily-level' id = 'level-input' type = 'number'/>
+        <div>
+            <span style="position: relative; top: 9px; left: 3px">角色等級</span>
+            <input class = 'daily-level' id = 'level-input' type = 'number' style="position: relative; top: 8px; left:3px; border-radius: 6px; padding: 8px;"/>
+            <div style="float:right; display: flex;">
+                <button id="all-complete-button" onclick="all_selected()" style="position: relative; margin: 3px;">全部勾選</button>
+                <button id="all-incomplete-button" onclick="all_canceled()" style="position: relative; margin: 3px;">全部取消</button>
+            </div>
+        </div>
         <table>
             <tr>
                 <td width="30%">地區</td>

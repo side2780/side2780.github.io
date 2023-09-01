@@ -17,6 +17,8 @@ var arcana = document.getElementById('daily-arcana-check');
 var morass = document.getElementById('daily-morass-check');
 var esfera = document.getElementById('daily-esfera-check');
 
+var checkBoxs = [vanishing, chuchu, lachein, arcana, morass, esfera];
+
 function totalCompleteExp(){
   var ans = 0;
   for (var i = 0; i < 6; i++){
@@ -68,3 +70,19 @@ inputLevel.addEventListener('input', function(event){
     checkboxLock(morass, level, 230);
     checkboxLock(esfera, level, 235);
 });
+
+function all_selected(){
+  for (var i = 0; i < 6; i++){
+    if (checkBoxs[i].disabled == false){
+      checkBoxs[i].checked = true;
+      checkBoxs[i].dispatchEvent(new Event('change'));
+    }
+  }
+}
+
+function all_canceled(){
+  for (var i = 0; i < 6; i++){
+    checkBoxs[i].checked = false;
+    checkBoxs[i].dispatchEvent(new Event('change'));
+  }
+}

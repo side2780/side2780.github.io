@@ -19,30 +19,16 @@ var areaNames = [
   'vanishing', 'chuchu', 'lachein', 'arcana', 'morass', 'esfera', 'moonbridge', 'labyrinth', 'limen', 'cernium', 'burningcernium', 'arcus', 'odium'
 ];
 
-var sum = 0;
-// all checkbox
-var vanishing = document.getElementById('daily-vanishing-check');
-var chuchu = document.getElementById('daily-chuchu-check');
-var lachein = document.getElementById('daily-lachein-check');
-var arcana = document.getElementById('daily-arcana-check');
-var morass = document.getElementById('daily-morass-check');
-var esfera = document.getElementById('daily-esfera-check');
-var moonbridge = document.getElementById('daily-moonbridge-check');
-var labyrinth = document.getElementById('daily-labyrinth-check');
-var limen = document.getElementById('daily-limen-check');
-var cernium = document.getElementById('daily-cernium-check');
-var burningcernium = document.getElementById('daily-burningcernium-check');
-var arcus = document.getElementById('daily-arcus-check');
-var odium = document.getElementById('daily-odium-check');
+var checkBoxs = [];
+for (var i = 0; i < 13; i++) {
+  checkBoxs.push(document.getElementById(`daily-${areaNames[i]}-check`));
+}
 
-const inputLevel = document.getElementById('level-input');
-
-//-----------------------------------------------------------------------------
-var checkBoxs = [vanishing, chuchu, lachein, arcana, morass, esfera, moonbridge, labyrinth, limen, cernium, burningcernium, arcus, odium];
-
-for (let i = 0; i < 13; i++){
+for (let i = 0; i < 13; i++) {
   checkBoxs[i].addEventListener('change', () => changeQuestStatus(i));
 }
+
+const inputLevel = document.getElementById('level-input');
 
 function changeQuestStatus(index) {
   const area = areaNames[index];
@@ -83,24 +69,29 @@ function updateExpDisplay() {
 inputLevel.addEventListener('input', function (event) {
   const level = parseInt(event.target.value);
   for (var i = 0; i < 13; i++) {
-    checkboxLock(checkBoxs[i], level, requiredLevel[i]);
+    questBlockLock(i, level);
     checkBoxs[i].dispatchEvent(new Event('change'));
   }
   updateExpDisplay();
 });
 
-function checkboxLock(box, level, limitLevel) {
+function questBlockLock(i, level) {
+  const limitLevel = requiredLevel[i];
+  var box = checkBoxs[i];
+  var block = document.getElementById(`daily-${areaNames[i]}-block`);
+
   if (isNaN(level) || level < limitLevel) {
+    block.style.display = "none";
     box.disabled = true;
     box.checked = false;
     box.dispatchEvent(new Event('change'));
   } else {
+    block.style.display = "";
     box.disabled = false;
   }
 }
 
-
-function all_selected() {
+function all_quest_selected() {
   for (var i = 0; i < 13; i++) {
     if (checkBoxs[i].disabled == false) {
       checkBoxs[i].checked = true;
@@ -109,11 +100,28 @@ function all_selected() {
   }
 }
 
-function all_canceled() {
+function all_quest_canceled() {
   for (var i = 0; i < 13; i++) {
     checkBoxs[i].checked = false;
     checkBoxs[i].dispatchEvent(new Event('change'));
   }
 }
 
+document.getElementById("park-sunday-check").addEventListener("change", function(event){
+  if(this.checked){
+    document.getElementById("park-sundaymaple-block").style.visibility = "";
+  } else{
+    document.getElementById("park-sundaymaple-block").style.visibility = "hidden";
+    document.getElementById("park-sundaymaple-check").checked = false;
+  }
+});
 
+function all_park_selceted(){
+  //TODO
+  return;
+}
+
+function all_park_canceled(){
+  //TODO
+  return;
+}

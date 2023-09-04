@@ -77,12 +77,47 @@ function totalCompleteExp() {
 }
 
 function updateExpDisplay() {
-  var totalExpNumber = totalCompleteExp();
+  
+  //每日任務
+  var questExpNumber = totalCompleteExp();
+  var questExpPercet = ((questExpNumber / levelUpExp[parseInt(inputLevel.value)] * 100) || 0).toFixed(3);
+  const questString = `${questExpNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}`
+  document.getElementById('daily-total-exp').textContent = questString;
+  document.getElementById('daily-total-percent').textContent = `${questExpPercet.toString()}%`;
+  document.getElementById('daily-summary-quest').textContent = `每日任務: ${questString} (${questExpPercet.toString()}%)`;
+
+  //怪物公園
+  var parkCount = 0;
+  for (var i = 0; i < 2; i++){
+    parkCount += parseInt(document.getElementById(`park-${parkAreaNames[i]}-select`).value);
+  }
+  document.getElementById('park-total-count').textContent = parkCount;
+  if (parkCount > 7){
+    document.getElementById('park-total-count').style.color = "red";
+  } else {
+    document.getElementById('park-total-count').style.color = "black";
+  }
+
+  var parkExpNumber = 0;
+  for (var i = 0; i < 2; i++){
+    parkExpNumber += parkExp[i] * parseInt(document.getElementById(`park-${parkAreaNames[i]}-select`).value);
+  }
+  if (document.getElementById('park-sundaymaple-check').checked){
+    parkExpNumber *= 2;
+  } else if (document.getElementById('park-sunday-check').checked){
+    parkExpNumber *= 1.5;
+  }
+  document.getElementById('park-total-exp').textContent = parkExpNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  var parkExpPercet = ((parkExpNumber / levelUpExp[parseInt(inputLevel.value)] * 100) || 0).toFixed(3);
+  const parkString = `${parkExpNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}`
+  document.getElementById('park-total-percent').textContent = `${parkExpPercet.toString()}%`;
+  document.getElementById('daily-summary-park').textContent = `怪物公園: ${parkString} (${parkExpPercet.toString()}%)`;
+
+  //合計部分
+  var totalExpNumber = questExpNumber + parkExpNumber;
   var totalExpPercet = ((totalExpNumber / levelUpExp[parseInt(inputLevel.value)] * 100) || 0).toFixed(3);
   const resultString = `${totalExpNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}`
-  document.getElementById('daily-total-exp').textContent = resultString;
-  document.getElementById('daily-total-percent').textContent = `${totalExpPercet.toString()}%`;
-  document.getElementById('daily-summary-quest').textContent = `每日任務: ${resultString} (${totalExpPercet.toString()}%)`;
+  
   document.getElementById('daily-summary-total').textContent = `合計: ${resultString} (${totalExpPercet.toString()}%)`;
 }
 
@@ -184,17 +219,17 @@ function parkSelected(index){
   const isSunday = document.getElementById(`park-sunday-check`).checked;
   const isSundayMaple = document.getElementById(`park-sundaymaple-check`).checked;
   var numLabel = document.getElementById(`park-${name}-exp`);
-  var pctLabel = document.getElementById(`park-${name}-percent`);
+  var percentLabel = document.getElementById(`park-${name}-percent`);
 
   if (isSundayMaple){
     numLabel.textContent = (parkExp[index] * 2 * n).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-    pctLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * 2 * n * 100) || 0).toFixed(3)}%`;
+    percentLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * 2 * n * 100) || 0).toFixed(3)}%`;
   } else if (isSunday){
     document.getElementById(`park-${name}-exp`).textContent = (parkExp[index] * 1.5 * n).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-    pctLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * 1.5 * n * 100) || 0).toFixed(3)}%`;
+    percentLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * 1.5 * n * 100) || 0).toFixed(3)}%`;
   } else {
     document.getElementById(`park-${name}-exp`).textContent = (parkExp[index] * n).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-    pctLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * n * 100) || 0).toFixed(3)}%`;
+    percentLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * n * 100) || 0).toFixed(3)}%`;
   }
   updateExpDisplay();
 }

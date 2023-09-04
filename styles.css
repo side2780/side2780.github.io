@@ -15,10 +15,12 @@ body {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  position: relative;
 }
 
 .container:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  z-index:999;
 }
 
 a {
@@ -126,4 +128,8 @@ tr td {
 .daily-summary-box:hover {
   box-shadow: 0 0 5px rgba(255, 192, 3, 0.858);
   background-color: rgb(255, 236, 67);
+}
+
+.park-select {
+  padding: 1px 3px 1px 3px;
 }

@@ -16,7 +16,7 @@
         </div>
     </center>
     <div id='daily-summary' class='container'
-        style="float: left; position: fixed; right: 20px; padding: 10px; z-index: 1;">
+        style="position: fixed; right: 20px; padding: 10px; z-index: 1;">
         <div id='daily-summary-quest' class='daily-summary-box'
             onclick="document.getElementById(`daily-quest-block`).scrollIntoView()">每日任務: 0 (0.000%)</div>
         <div id='daily-summary-park' class='daily-summary-box'
@@ -31,7 +31,7 @@
             <span style="position: relative; top: 12px; left: 3px">角色等級</span>
             <input class='daily-level' id='level-input' type='number' min="1" max="300"
                 style="position: relative; top: 8px; left:10px; border-radius: 6px; padding: 8px;" />
-            <div style="display: flex; position: relative; left: 270px;">
+            <div style="display: flex; position: relative; left: 45%;">
                 <button onclick="all_quest_selected()" style="position: relative; margin: 3px;">全部勾選</button>
                 <button onclick="all_quest_canceled()" style="position: relative; margin: 3px;">全部取消</button>
             </div>
@@ -45,7 +45,7 @@
             </tr>
             <tr id="daily-vanishing-block" style="display:none">
                 <td>消逝的旅途</td>
-                <td><input id="daily-vanishing-check" type="checkbox" disabled="true";"></td>
+                <td><input id="daily-vanishing-check" type="checkbox" disabled="true" ;"></td>
                 <td>
                     <div id="daily-vanishing-exp">0</div>
                 </td>
@@ -196,8 +196,7 @@
                 <input id="park-sundaymaple-check" style="position: relative; top: 16px; left: 0px" type="checkbox">
                 <span style="position: relative; top: 16px; left: -2px">星期天楓之谷</span>
             </div>
-            <div style="display: flex; position: relative; left: 247px;">
-                <button onclick="all_park_selected()" style="position: relative; margin: 3px;">全部勾選</button>
+            <div style="display: flex; position: relative; left: 54%;">
                 <button onclick="all_park_canceled()" style="position: relative; margin: 3px;">全部取消</button>
             </div>
         </div>
@@ -207,6 +206,36 @@
                 <td width="15%">場數</td>
                 <td width="30%">經驗值</td>
                 <td width="20%">%數</td>
+            </tr>
+            <tr id="park-vanishing-block" style="display: none;">
+                <td>消逝的旅途</td>
+                <td><select class="park-select" id="park-vanishing-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-vanishing-exp">0</td>
+                <td id="park-vanishing-percent">0.000%</td>
+            </tr>
+            <tr id="park-chuchu-block" style="display: none;">
+                <td>啾啾艾爾蘭</td>
+                <td><select class="park-select" id="park-chuchu-select">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                </select></td>
+                <td id="park-chuchu-exp">0</td>
+                <td id="park-chuchu-percent">0.000%</td>
             </tr>
         </table>
     </div>

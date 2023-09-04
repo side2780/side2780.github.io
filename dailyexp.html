@@ -15,12 +15,16 @@
             <div class="top-row-item" onclick="javascript:location.href=`dailyexp.html`">每日任務經驗值計算器</a></div>
         </div>
     </center>
-    <div id='daily-summary' class='container'
-        style="position: fixed; right: 20px; padding: 10px; z-index: 1;">
+    <div id="warning-block"></div>
+    <div id='daily-summary' class='container' style="position: fixed; right: 20px; padding: 10px; z-index: 1;">
         <div id='daily-summary-quest' class='daily-summary-box'
             onclick="document.getElementById(`daily-quest-block`).scrollIntoView()">每日任務: 0 (0.000%)</div>
         <div id='daily-summary-park' class='daily-summary-box'
-            onclick="document.getElementById(`daily-park-block`).scrollIntoView()">怪物公園: 0 (0.000%)</div>
+            onclick="document.getElementById(`daily-park-block`).scrollIntoView()"
+            onmouseover="warningOver(`park`);"
+            onmouseleave="warningLeave(`park`)">
+            怪物公園: 0 (0.000%)
+        </div>
         <div id='daily-summary-total' class='daily-summary-box' style="background-color: rgb(255, 236, 67);">合計: 0
             (0.000%)
         </div>
@@ -225,15 +229,15 @@
             <tr id="park-chuchu-block" style="display: none;">
                 <td>啾啾艾爾蘭</td>
                 <td><select class="park-select" id="park-chuchu-select">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                </select></td>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
                 <td id="park-chuchu-exp">0</td>
                 <td id="park-chuchu-percent">0.000%</td>
             </tr>

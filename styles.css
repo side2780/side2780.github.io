@@ -20,7 +20,7 @@ body {
 
 .container:hover {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  z-index:999;
+  z-index: 999;
 }
 
 a {
@@ -133,3 +133,15 @@ tr td {
 .park-select {
   padding: 1px 3px 1px 3px;
 }
+
+#warning-block{
+  display: none;
+  position: fixed;
+  color: #fff;
+  background: rgba(255, 0, 0, 0.8);
+  padding: 10px 5px 10px 5px;
+  border-radius: 8px;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  }

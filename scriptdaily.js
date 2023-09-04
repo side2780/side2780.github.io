@@ -77,7 +77,7 @@ function totalCompleteExp() {
 }
 
 function updateExpDisplay() {
-  
+
   //每日任務
   var questExpNumber = totalCompleteExp();
   var questExpPercet = ((questExpNumber / levelUpExp[parseInt(inputLevel.value)] * 100) || 0).toFixed(3);
@@ -88,23 +88,29 @@ function updateExpDisplay() {
 
   //怪物公園
   var parkCount = 0;
-  for (var i = 0; i < 2; i++){
+  for (var i = 0; i < 2; i++) {
     parkCount += parseInt(document.getElementById(`park-${parkAreaNames[i]}-select`).value);
   }
   document.getElementById('park-total-count').textContent = parkCount;
-  if (parkCount > 7){
+  if (parkCount > 7) {
     document.getElementById('park-total-count').style.color = "red";
+    document.getElementById('daily-summary-park').style.backgroundColor = "rgba(255, 0, 0, 0.8)"; 
+    document.getElementById('daily-summary-park').style.borderColor = "red";
+    document.getElementById('daily-summary-park').style.color = "white";
   } else {
     document.getElementById('park-total-count').style.color = "black";
+    document.getElementById('daily-summary-park').style.backgroundColor = "rgb(255, 252, 67)";
+    document.getElementById('daily-summary-park').style.borderColor = "rgba(255, 192, 3, 0.858)";
+    document.getElementById('daily-summary-park').style.color = "black";
   }
 
   var parkExpNumber = 0;
-  for (var i = 0; i < 2; i++){
+  for (var i = 0; i < 2; i++) {
     parkExpNumber += parkExp[i] * parseInt(document.getElementById(`park-${parkAreaNames[i]}-select`).value);
   }
-  if (document.getElementById('park-sundaymaple-check').checked){
+  if (document.getElementById('park-sundaymaple-check').checked) {
     parkExpNumber *= 2;
-  } else if (document.getElementById('park-sunday-check').checked){
+  } else if (document.getElementById('park-sunday-check').checked) {
     parkExpNumber *= 1.5;
   }
   document.getElementById('park-total-exp').textContent = parkExpNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
@@ -117,7 +123,7 @@ function updateExpDisplay() {
   var totalExpNumber = questExpNumber + parkExpNumber;
   var totalExpPercet = ((totalExpNumber / levelUpExp[parseInt(inputLevel.value)] * 100) || 0).toFixed(3);
   const resultString = `${totalExpNumber.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}`
-  
+
   document.getElementById('daily-summary-total').textContent = `合計: ${resultString} (${totalExpPercet.toString()}%)`;
 }
 
@@ -127,9 +133,8 @@ inputLevel.addEventListener('input', function (event) {
     questBlockLock(i, level);
   }
 
-  for (var i = 0; i < 2; i++){
+  for (var i = 0; i < 2; i++) {
     parkBlockLock(i, level);
-    console.log(level, 'park', i);
   }
 
   updateExpDisplay();
@@ -159,7 +164,7 @@ function parkBlockLock(i, level) {
   var box = document.getElementById(`park-${parkAreaNames[i]}-select`);
   var block = document.getElementById(`park-${parkAreaNames[i]}-block`);
 
-  if (isNaN(level) || level < lower || level > upper){
+  if (isNaN(level) || level < lower || level > upper) {
     block.style.display = "none";
     box.value = 0;
   } else {
@@ -185,34 +190,34 @@ function all_quest_canceled() {
   }
 }
 
-document.getElementById("park-sunday-check").addEventListener("change", function(event){
-  if(this.checked){
+document.getElementById("park-sunday-check").addEventListener("change", function (event) {
+  if (this.checked) {
     document.getElementById("park-sundaymaple-block").style.visibility = "";
-  } else{
+  } else {
     document.getElementById("park-sundaymaple-block").style.visibility = "hidden";
     document.getElementById("park-sundaymaple-check").checked = false;
   }
-  for (var i = 0; i < 2; i++){
+  for (var i = 0; i < 2; i++) {
     parkSelected(i);
   }
   updateExpDisplay();
 });
 
-document.getElementById("park-sundaymaple-check").addEventListener("change", function(event){
-  for (var i = 0; i < 2; i++){
+document.getElementById("park-sundaymaple-check").addEventListener("change", function (event) {
+  for (var i = 0; i < 2; i++) {
     parkSelected(i);
   }
   updateExpDisplay();
 });
 
-function all_park_canceled(){
-  for (var i = 0; i < 2; i++){
+function all_park_canceled() {
+  for (var i = 0; i < 2; i++) {
     document.getElementById(`park-${parkAreaNames[i]}-select`).value = 0;
     document.getElementById(`park-${parkAreaNames[i]}-select`).dispatchEvent(new Event('change'));
   }
 }
 
-function parkSelected(index){
+function parkSelected(index) {
   const name = parkAreaNames[index];
   const selection = document.getElementById(`park-${name}-select`);
   const n = selection.value;
@@ -221,10 +226,10 @@ function parkSelected(index){
   var numLabel = document.getElementById(`park-${name}-exp`);
   var percentLabel = document.getElementById(`park-${name}-percent`);
 
-  if (isSundayMaple){
+  if (isSundayMaple) {
     numLabel.textContent = (parkExp[index] * 2 * n).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     percentLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * 2 * n * 100) || 0).toFixed(3)}%`;
-  } else if (isSunday){
+  } else if (isSunday) {
     document.getElementById(`park-${name}-exp`).textContent = (parkExp[index] * 1.5 * n).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     percentLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * 1.5 * n * 100) || 0).toFixed(3)}%`;
   } else {
@@ -232,4 +237,19 @@ function parkSelected(index){
     percentLabel.textContent = `${((parkExp[index] / levelUpExp[parseInt(inputLevel.value)] * n * 100) || 0).toFixed(3)}%`;
   }
   updateExpDisplay();
+}
+
+function warningOver(name){
+  if (name == 'park'){
+    if (parseInt(document.getElementById(`park-total-count`).textContent) > 7) {
+      document.getElementById(`warning-block`).style.display = `block`;
+      document.getElementById(`warning-block`).textContent = `Warning: 怪物公園完成數量超過上限(7場)`;
+    }
+  }
+}
+
+function warningLeave(name){
+  if (name == 'park'){
+    document.getElementById(`warning-block`).style.display = `none`;
+  }
 }

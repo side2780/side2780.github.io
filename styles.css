@@ -1,0 +1,147 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  /* background-color: rgb(109, 109, 109); */
+  /* background-image: url('background.png'); */
+  background-size: cover;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px 50px 20px 50px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  position: relative;
+}
+
+.container:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.aut-level {
+  width: 70%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.daily-level {
+  width: 15%;
+  padding: 6px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  display: block;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#calculateBtn {
+  width: 80%;
+  position: relative;
+  left: 10%;
+}
+
+table {
+  width: 100%;
+  border: 3px solid;
+  /* border-radius: 8px; */
+}
+
+tr td {
+  padding: 10px;
+  border: 2px ridge;
+  text-align: center;
+}
+
+.top-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 2px 50px 2px 50px;
+  background-color: white;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.top-row:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.top-row-item {
+  border-radius: 5px;
+  background-color: #007bff;
+  margin: 2px;
+  padding: 6px;
+  color: white;
+}
+
+.top-row-item:hover {
+  background-color: #0056b3;
+}
+
+.top-row-item a {
+  color: white;
+}
+
+.daily-summary-box {
+  width: 300px auto;
+  min-width: 200px;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 6px 3px 6px 3px;
+  border: 2px solid rgba(255, 192, 3, 0.858);
+  background-color: rgb(255, 252, 67);
+  font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+}
+
+.daily-summary-box:hover {
+  box-shadow: 0 0 5px rgba(255, 192, 3, 0.858);
+  background-color: rgb(255, 236, 67);
+}
+
+.park-select {
+  padding: 1px 3px 1px 3px;
+}
+
+#information-block {
+  display: none;
+  position: fixed;
+  color: #fff;
+  background: black;
+  padding: 10px 5px 10px 5px;
+  border-radius: 8px;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+}

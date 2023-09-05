@@ -263,7 +263,7 @@ function informationOver(name) {
   var block = document.getElementById('information-block');
   if (name == 'park') {
     if (parseInt(document.getElementById(`park-total-count`).textContent) > 7) {
-      block.style.display = `inline-block`;
+      block.style.display = `block`;
       block.style.backgroundColor = `rgba(255, 0, 0, 0.8)`;
       block.textContent = `Warning: 怪物公園完成數量超過上限(7場)`;
     }
@@ -273,8 +273,10 @@ function informationOver(name) {
     var questExp = parseInt(document.getElementById('daily-total-exp').textContent.replace(/[,]+/g,""));
     var parkExp = parseInt(document.getElementById(`park-total-exp`).textContent.replace(/[,]+/g,""));
     var days = Math.ceil(levelUpExp[parseInt(inputLevel.value)] / (questExp + parkExp));
-    if (!isFinite(days)){return;}
-    block.style.display = `inline-block`;
+    if (!isFinite(days)) {
+      return;
+    }
+    block.style.display = `block`;
     block.style.backgroundColor = `rgba(4, 214, 32, 0.8)`;
     block.textContent = `重複 ${days} 天就可以升等囉`;
   }

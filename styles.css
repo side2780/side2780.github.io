@@ -134,11 +134,11 @@ tr td {
   padding: 1px 3px 1px 3px;
 }
 
-#warning-block{
+#information-block{
   display: none;
   position: fixed;
   color: #fff;
-  background: rgba(255, 0, 0, 0.8);
+  background: black;
   padding: 10px 5px 10px 5px;
   border-radius: 8px;
   top: 20px;

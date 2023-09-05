@@ -20,19 +20,19 @@ var questAreaNames = [
 ];
 
 const parkRequiredLevel = [
-  200, 210
+  105, 105, 105, 105, 105, 140, 140, 140, 140, 140, 140, 180, 180, 180, 180, 200, 210, 220, 225, 230, 235, 240, 245, 250, 255, 260
 ];
 
 const parkMaxLevel = [
-  300, 300
+  139, 139, 139, 139, 139, 179, 179, 179, 179, 179, 179, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300, 300
 ];
 
 const parkExp = [
-  179957540, 642539340, 1608830495, 2353786685, 2724323200, 3145303350, 3630339550, 4686646600
+  3908220, 5989675, 7311630, 8129820, 11524015, 11665170, 13378390, 15311670, 19345565, 26950030, 27953565, 33576980, 35340485, 39775800, 40650435, 179957540, 642539340, 1608830495, 2413245742, 2724323200, 3146303350, 3630339550, 4686646600, 7029450500, 7776278700, 0
 ];
 
 var parkAreaNames = [
-  'vanishing', 'chuchu'
+  'ASA', 'MTF', 'SFTC', 'SPH', 'OB', 'DIF', 'FT', 'CR', 'RC', 'FDT', 'WT', 'DN', 'TO', 'KS', 'SV', 'vanishing', 'chuchu', 'lachein', 'arcana', 'morass', 'esfera', 'sellas', 'moonbridge', 'labyrinth', 'limen', 'extreme'
 ];
 
 var checkBoxs = [];
@@ -44,7 +44,7 @@ for (let i = 0; i < 13; i++) {
   checkBoxs[i].addEventListener('change', () => changeQuestStatus(i));
 }
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 26; i++) {
   document.getElementById(`park-${parkAreaNames[i]}-select`).addEventListener('change', () => parkSelected(i));
 }
 
@@ -88,13 +88,14 @@ function updateExpDisplay() {
 
   //怪物公園
   var parkCount = 0;
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 26; i++) {
     parkCount += parseInt(document.getElementById(`park-${parkAreaNames[i]}-select`).value);
   }
   document.getElementById('park-total-count').textContent = parkCount;
-  if (parkCount > 7) {
+  var extremeCount = parseInt(document.getElementById('park-extreme-select').value);
+  if (parkCount - extremeCount > 7) {
     document.getElementById('park-total-count').style.color = "red";
-    document.getElementById('daily-summary-park').style.backgroundColor = "rgba(255, 0, 0, 0.8)"; 
+    document.getElementById('daily-summary-park').style.backgroundColor = "rgba(255, 0, 0, 0.8)";
     document.getElementById('daily-summary-park').style.borderColor = "red";
     document.getElementById('daily-summary-park').style.color = "white";
   } else {
@@ -105,7 +106,7 @@ function updateExpDisplay() {
   }
 
   var parkExpNumber = 0;
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 26; i++) {
     parkExpNumber += parkExp[i] * parseInt(document.getElementById(`park-${parkAreaNames[i]}-select`).value);
   }
   if (document.getElementById('park-sundaymaple-check').checked) {
@@ -129,11 +130,30 @@ function updateExpDisplay() {
 
 inputLevel.addEventListener('input', function (event) {
   const level = parseInt(event.target.value);
+  /* NEW AGE VERSION
+  260~264 204000000
+  265~269 265200000
+  270~274 420000000
+  275~279 537600000
+  280~ 583200000
+  */
+  if (level >= 260 && level <= 269) {
+    parkExp[25] = level * 204000000;
+  } else if (level >= 270 && level <= 274) {
+    parkExp[25] = level * 300000000;
+  } else if (level >= 275 && level <= 279) {
+    parkExp[25] = level * 384000000;
+  } else if (level >= 280) {
+    parkExp[25] = level * 432000000;
+  } else {
+    parkExp[25] = 0;
+  }
+
   for (var i = 0; i < 13; i++) {
     questBlockLock(i, level);
   }
 
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 26; i++) {
     parkBlockLock(i, level);
   }
 
@@ -197,21 +217,21 @@ document.getElementById("park-sunday-check").addEventListener("change", function
     document.getElementById("park-sundaymaple-block").style.visibility = "hidden";
     document.getElementById("park-sundaymaple-check").checked = false;
   }
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 26; i++) {
     parkSelected(i);
   }
   updateExpDisplay();
 });
 
 document.getElementById("park-sundaymaple-check").addEventListener("change", function (event) {
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 26; i++) {
     parkSelected(i);
   }
   updateExpDisplay();
 });
 
 function all_park_canceled() {
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 26; i++) {
     document.getElementById(`park-${parkAreaNames[i]}-select`).value = 0;
     document.getElementById(`park-${parkAreaNames[i]}-select`).dispatchEvent(new Event('change'));
   }
@@ -239,17 +259,27 @@ function parkSelected(index) {
   updateExpDisplay();
 }
 
-function warningOver(name){
-  if (name == 'park'){
+function informationOver(name) {
+  var block = document.getElementById('information-block');
+  if (name == 'park') {
     if (parseInt(document.getElementById(`park-total-count`).textContent) > 7) {
-      document.getElementById(`warning-block`).style.display = `block`;
-      document.getElementById(`warning-block`).textContent = `Warning: 怪物公園完成數量超過上限(7場)`;
+      block.style.display = `block`;
+      block.style.backgroundColor = `rgba(255, 0, 0, 0.8)`;
+      block.textContent = `Warning: 怪物公園完成數量超過上限(7場)`;
     }
+  }
+
+  if (name == 'total') {
+    var questExp = parseInt(document.getElementById('daily-total-exp').textContent.replace(/[,]+/g,""));
+    var parkExp = parseInt(document.getElementById(`park-total-exp`).textContent.replace(/[,]+/g,""));
+    var days = Math.ceil(levelUpExp[parseInt(inputLevel.value)] / (questExp + parkExp));
+    if (!isFinite(days)){return;}
+    block.style.display = `block`;
+    block.style.backgroundColor = `rgba(4, 214, 32, 0.8)`;
+    block.textContent = `重複 ${days} 天就可以升等囉`;
   }
 }
 
-function warningLeave(name){
-  if (name == 'park'){
-    document.getElementById(`warning-block`).style.display = `none`;
-  }
-}
+function informationLeave(name) {
+  document.getElementById(`information-block`).style.display = `none`;
+};

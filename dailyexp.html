@@ -15,17 +15,17 @@
             <div class="top-row-item" onclick="javascript:location.href=`dailyexp.html`">每日任務經驗值計算器</a></div>
         </div>
     </center>
-    <div id="warning-block"></div>
+    <div id="information-block"></div>
     <div id='daily-summary' class='container' style="position: fixed; right: 20px; padding: 10px; z-index: 1;">
         <div id='daily-summary-quest' class='daily-summary-box'
             onclick="document.getElementById(`daily-quest-block`).scrollIntoView()">每日任務: 0 (0.000%)</div>
         <div id='daily-summary-park' class='daily-summary-box'
             onclick="document.getElementById(`daily-park-block`).scrollIntoView()"
-            onmouseover="warningOver(`park`);"
-            onmouseleave="warningLeave(`park`)">
+            onmouseover="informationOver(`park`);" onmouseleave="informationLeave(`park`)">
             怪物公園: 0 (0.000%)
         </div>
-        <div id='daily-summary-total' class='daily-summary-box' style="background-color: rgb(255, 236, 67);">合計: 0
+        <div id='daily-summary-total' class='daily-summary-box' style="background-color: rgb(255, 236, 67);"
+            onmouseover="informationOver(`total`)" onmouseleave="informationLeave(`total`)">合計: 0
             (0.000%)
         </div>
     </div>
@@ -211,6 +211,231 @@
                 <td width="30%">經驗值</td>
                 <td width="20%">%數</td>
             </tr>
+            <tr id="park-ASA-block" style="display: none;">
+                <td>ASA</td>
+                <td><select class="park-select" id="park-ASA-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-ASA-exp">0</td>
+                <td id="park-ASA-percent">0.000%</td>
+            </tr>
+            <tr id="park-MTF-block" style="display: none;">
+                <td>MTF</td>
+                <td><select class="park-select" id="park-MTF-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-MTF-exp">0</td>
+                <td id="park-MTF-percent">0.000%</td>
+            </tr>
+            <tr id="park-SFTC-block" style="display: none;">
+                <td>SFTC</td>
+                <td><select class="park-select" id="park-SFTC-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-SFTC-exp">0</td>
+                <td id="park-SFTC-percent">0.000%</td>
+            </tr>
+            <tr id="park-SPH-block" style="display: none;">
+                <td>SPH</td>
+                <td><select class="park-select" id="park-SPH-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-SPH-exp">0</td>
+                <td id="park-SPH-percent">0.000%</td>
+            </tr>
+            <tr id="park-OB-block" style="display: none;">
+                <td>OB</td>
+                <td><select class="park-select" id="park-OB-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-OB-exp">0</td>
+                <td id="park-OB-percent">0.000%</td>
+            </tr>
+            <tr id="park-DIF-block" style="display: none;">
+                <td>DIF</td>
+                <td><select class="park-select" id="park-DIF-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-DIF-exp">0</td>
+                <td id="park-DIF-percent">0.000%</td>
+            </tr>
+            <tr id="park-FT-block" style="display: none;">
+                <td>FT</td>
+                <td><select class="park-select" id="park-FT-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-FT-exp">0</td>
+                <td id="park-FT-percent">0.000%</td>
+            </tr>
+            <tr id="park-CR-block" style="display: none;">
+                <td>CR</td>
+                <td><select class="park-select" id="park-CR-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-CR-exp">0</td>
+                <td id="park-CR-percent">0.000%</td>
+            </tr>
+            <tr id="park-RC-block" style="display: none;">
+                <td>RC</td>
+                <td><select class="park-select" id="park-RC-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-RC-exp">0</td>
+                <td id="park-RC-percent">0.000%</td>
+            </tr>
+            <tr id="park-FDT-block" style="display: none;">
+                <td>FDT</td>
+                <td><select class="park-select" id="park-FDT-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-FDT-exp">0</td>
+                <td id="park-FDT-percent">0.000%</td>
+            </tr>
+            <tr id="park-WT-block" style="display: none;">
+                <td>WT</td>
+                <td><select class="park-select" id="park-WT-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-WT-exp">0</td>
+                <td id="park-WT-percent">0.000%</td>
+            </tr>
+            <tr id="park-DN-block" style="display: none;">
+                <td>龍之巢穴</td>
+                <td><select class="park-select" id="park-DN-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-DN-exp">0</td>
+                <td id="park-DN-percent">0.000%</td>
+            </tr>
+            <tr id="park-TO-block" style="display: none;">
+                <td>忘卻的神殿</td>
+                <td><select class="park-select" id="park-TO-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-TO-exp">0</td>
+                <td id="park-TO-percent">0.000%</td>
+            </tr>
+            <tr id="park-KS-block" style="display: none;">
+                <td>騎士團的要塞</td>
+                <td><select class="park-select" id="park-KS-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-KS-exp">0</td>
+                <td id="park-KS-percent">0.000%</td>
+            </tr>
+            <tr id="park-SV-block" style="display: none;">
+                <td>幽靈峽谷</td>
+                <td><select class="park-select" id="park-SV-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-SV-exp">0</td>
+                <td id="park-SV-percent">0.000%</td>
+            </tr>
             <tr id="park-vanishing-block" style="display: none;">
                 <td>消逝的旅途</td>
                 <td><select class="park-select" id="park-vanishing-select">
@@ -240,6 +465,135 @@
                     </select></td>
                 <td id="park-chuchu-exp">0</td>
                 <td id="park-chuchu-percent">0.000%</td>
+            </tr>
+            <tr id="park-lachein-block" style="display: none;">
+                <td>拉契爾恩</td>
+                <td><select class="park-select" id="park-lachein-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-lachein-exp">0</td>
+                <td id="park-lachein-percent">0.000%</td>
+            </tr>
+            <tr id="park-arcana-block" style="display: none;">
+                <td>阿爾卡娜</td>
+                <td><select class="park-select" id="park-arcana-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-arcana-exp">0</td>
+                <td id="park-arcana-percent">0.000%</td>
+            </tr>
+            <tr id="park-morass-block" style="display: none;">
+                <td>魔菈斯</td>
+                <td><select class="park-select" id="park-morass-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-morass-exp">0</td>
+                <td id="park-morass-percent">0.000%</td>
+            </tr>
+            <tr id="park-esfera-block" style="display: none;">
+                <td>艾斯佩拉</td>
+                <td><select class="park-select" id="park-esfera-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-esfera-exp">0</td>
+                <td id="park-esfera-percent">0.000%</td>
+            </tr>
+            <tr id="park-sellas-block" style="display: none;">
+                <td>賽拉斯</td>
+                <td><select class="park-select" id="park-sellas-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-sellas-exp">0</td>
+                <td id="park-sellas-percent">0.000%</td>
+            </tr>
+            <tr id="park-moonbridge-block" style="display: none;">
+                <td>月之橋</td>
+                <td><select class="park-select" id="park-moonbridge-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-moonbridge-exp">0</td>
+                <td id="park-moonbridge-percent">0.000%</td>
+            </tr>
+            <tr id="park-labyrinth-block" style="display: none;">
+                <td>苦痛迷宮</td>
+                <td><select class="park-select" id="park-labyrinth-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-labyrinth-exp">0</td>
+                <td id="park-labyrinth-percent">0.000%</td>
+            </tr>
+            <tr id="park-limen-block" style="display: none;">
+                <td>利曼</td>
+                <td><select class="park-select" id="park-limen-select">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select></td>
+                <td id="park-limen-exp">0</td>
+                <td id="park-limen-percent">0.000%</td>
+            </tr>
+            <tr id="park-extreme-block" style="display: none;">
+                <td>終極怪物公園</td>
+                <td><select class="park-select" id="park-extreme-select">
+                        <option>0</option>
+                        <option>1</option>
+                    </select></td>
+                <td id="park-extreme-exp">0</td>
+                <td id="park-extreme-percent">0.000%</td>
             </tr>
             <tr>
                 <td>合計</td>

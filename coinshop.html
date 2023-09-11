@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動商店計算器</title>
+    <link rel='stylesheet' href='styles.css'>
+</head>
+
+<body>
+    <center>
+        <div class="top-row">
+            <div class="top-row-item" onclick="javascript:location.href=`index.html`">AUT計算器</div>
+            <div class="top-row-item" onclick="javascript:location.href=`dailyexp.html`">每日任務經驗值計算器</a></div>
+            <div class="top-row-item" onclick="javascript:location.href=`coinshop.html`">活動商店計算器</div>
+        </div>
+    </center>
+    <div class='container' id="shop-container">
+        <h1>活動商店計算器</h1>
+        <div style="display: flex;">
+            <button onclick="addRole()" style="margin: 3px 3px 3px 0px;">角色數量+1</button>
+            <button onclick="deleteRole()" style="margin: 3px;">角色數量-1</button>
+        </div>
+        <center>
+            <div id="div-shop-table"></div>
+        </center>
+    </div>
+    <script src="scriptcoin.js"></script>
+</body>
+
+</html>
